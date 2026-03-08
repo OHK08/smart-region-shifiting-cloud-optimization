@@ -1,0 +1,84 @@
+====================================================================
+  EXTENDED CLASSIFICATION REPORT
+  Green-Aware Cloud Region Recommender  |  7-Class Ensemble
+====================================================================
+
+  Splits  : Train 18,000  |  Val 6,000  |  Test 6,000
+  Classes : ['ap-south-1', 'ap-southeast-1', 'eu-central-1', 'eu-north-1', 'sa-east-1', 'us-east-1', 'us-west-2']
+
+--------------------------------------------------------------------
+  A. SCALAR METRICS  (Train / Validation / Test)
+--------------------------------------------------------------------
+
+  Metric                                   Train         Val        Test
+  --------------------------------------------------------------------
+  Accuracy                                0.9670      0.9653      0.9625
+  Precision (Macro)                       0.9664      0.9650      0.9646
+  Precision (Weighted)                    0.9670      0.9654      0.9626
+  Recall    (Macro)                       0.9369      0.9380      0.9327
+  Recall    (Weighted)                    0.9670      0.9653      0.9625
+  F1-Score  (Macro)                       0.9507      0.9508      0.9475
+  F1-Score  (Weighted)                    0.9667      0.9651      0.9622
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  MAE  (ordinal proxy)                    0.0802      0.0833      0.0862
+  MSE  (ordinal proxy)                    0.2573      0.2537      0.2605
+  RMSE (ordinal proxy)                    0.5073      0.5037      0.5104
+  R2   (ordinal proxy)                    0.8944      0.8959      0.8931
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+  Log-Loss                                0.1211      0.2406      0.2527
+  Cohen kappa                             0.9580      0.9559      0.9522
+  Matthews CC (MCC)                       0.9581      0.9559      0.9523
+  ROC-AUC (Weighted OvR)                  0.9996      0.9779      0.9770
+  ROC-AUC (Macro OvR)                     0.9996      0.9671      0.9640
+
+--------------------------------------------------------------------
+  B. PER-CLASS REPORT  (Test Set -- sklearn format)
+--------------------------------------------------------------------
+
+                precision    recall  f1-score   support
+
+    ap-south-1     0.9739    0.8324    0.8976       179
+ap-southeast-1     0.9564    0.9394    0.9478       561
+  eu-central-1     0.9633    0.8838    0.9219       327
+    eu-north-1     0.9630    0.9830    0.9729      1826
+     sa-east-1     0.9648    0.9576    0.9612       802
+     us-east-1     0.9581    0.9850    0.9714      1671
+     us-west-2     0.9725    0.9479    0.9601       634
+
+      accuracy                         0.9625      6000
+     macro avg     0.9646    0.9327    0.9475      6000
+  weighted avg     0.9626    0.9625    0.9622      6000
+
+--------------------------------------------------------------------
+  C. DETAILED PER-CLASS TABLE  (Test Set)
+--------------------------------------------------------------------
+
+  Class                Precision      Recall    F1-Score   Support
+  --------------------------------------------------------------
+  ap-south-1              0.9739      0.8324      0.8976       179
+  ap-southeast-1          0.9564      0.9394      0.9478       561
+  eu-central-1            0.9633      0.8838      0.9219       327
+  eu-north-1              0.9630      0.9830      0.9729      1826
+  sa-east-1               0.9648      0.9576      0.9612       802
+  us-east-1               0.9581      0.9850      0.9714      1671
+  us-west-2               0.9725      0.9479      0.9601       634
+
+--------------------------------------------------------------------
+  D. NOTE ON ORDINAL-PROXY METRICS  (MAE / MSE / RMSE / R2)
+--------------------------------------------------------------------
+
+  Class labels are integers assigned alphabetically (0 to 6):
+    0=ap-south-1  1=ap-southeast-1  2=eu-central-1  3=eu-north-1
+    4=sa-east-1   5=us-east-1       6=us-west-2
+
+  These integers are used as ordinal ranks. A prediction of class 2
+  when the truth is class 3 yields an absolute error of 1; predicting
+  class 0 when the truth is 6 yields an error of 6.
+
+  Perfect model target: MAE=0, MSE=0, RMSE=0, R2=1.
+
+  Test MAE  = 0.0862  (avg label-rank error per prediction)
+  Test RMSE = 0.5104  (penalises large misclassifications more)
+  Test R2   = 0.8931  (1=perfect fit, 0=mean-only baseline)
+
+====================================================================
