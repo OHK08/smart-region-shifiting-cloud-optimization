@@ -56,7 +56,7 @@ warnings.filterwarnings("ignore")
 OUT_ROOT   = "outputs"
 FIG_DIR    = os.path.join(OUT_ROOT, "figures")
 SPLIT_DIR  = os.path.join(OUT_ROOT, "splits")
-MODEL_PATH = os.path.join(OUT_ROOT, "model.pkl")
+MODEL_PATH = "model.pkl"
 
 for d in [OUT_ROOT, FIG_DIR, SPLIT_DIR]:
     os.makedirs(d, exist_ok=True)
@@ -107,7 +107,7 @@ print("=" * 65)
 print("  GREEN-AWARE CLOUD REGION RECOMMENDER -- Training Pipeline")
 print("=" * 65)
 
-df   = pd.read_csv("project/cloud_jobs_dataset.csv")
+df   = pd.read_csv("cloud_jobs_dataset.csv")
 dist = df["recommended_region"].value_counts(normalize=True).mul(100)
 print(f"\n  Dataset  : {len(df):,} rows x {df.shape[1]} columns")
 print(f"  Classes  : {df['recommended_region'].nunique()}")
